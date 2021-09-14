@@ -5,7 +5,7 @@
 // 경로 ../ 의미는 현재폴더를 벗어나 다른폴더이동을 의미
 import express from "express";
 import morgan from "morgan";
-import golbalRouter from "./routers/globalRouter";
+import rootRouter from "./routers/rootRouter";
 import videoRouter from "./routers/videoRouter";
 import userRouter from "./routers/userRouter";
 
@@ -18,7 +18,7 @@ app.set("view engine", "pug");
 app.set("views", process.cwd() + "/src/views");
 app.use(logger);
 app.use(express.urlencoded({extends: true}));
-app.use("/", golbalRouter);
+app.use("/", rootRouter);
 app.use("/videos", videoRouter);
 app.use("/users", userRouter);
 
