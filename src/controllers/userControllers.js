@@ -1,7 +1,10 @@
 import User from "../models/User";
 import bcrypt from "bcrypt";
 
-export const getjoin = (req, res) => res.render("join", {pageTitle: "Join"});
+export const getjoin = (req, res) => 
+  res.render("join", {pageTitle: "Join"});
+
+
 export const postjoin = async(req, res) => {
   const {name, username, email, password, password2, location} = req.body;
   const pageTitle = "Join"
@@ -62,6 +65,22 @@ export const postLogin = async(req, res) => {
   req.session.user = user;
   res.redirect("/");
 };
+
+export const startGithubLogin = (req, res) =>{
+  const baseUrl=`https://github.com/login/oauth/authorize`;
+  const config = {
+    client_id:"21366b8f0d2299c290a5",
+    allow_signup: false,
+    scope: "read:user user:email",
+  };
+  const params = new URLSearchParams(config).toString();
+  const finalUrl=`${baseUrl}?${params}`;
+  return res.redirect(finalUrl);
+}
+
+export const finishGithubLogin = (req,res) =>{
+  
+}
 
 export const edit = (req,res) => res.send("Edit User");
 export const remove = (req,res) => res.send("Remove User");

@@ -1,6 +1,9 @@
 import { compareSync } from "bcrypt";
 import Video from "../models/Video"
 
+
+// sort 정렬에 관한 기능 desc 오름차순 , asc 내림차순 
+// createdAT(날짜) 오브젝트를 통해 기능 활성화
 export const home = async(req, res) =>{
     const videos = await Video.find({}).sort({createdAT: "asc"});
     return res.render("home", {pageTitle: "Good Your Home", videos});
@@ -36,7 +39,6 @@ export const postEdit = async(req, res) => {
     description, 
     hashtags: Video.formatHashtags(hashtags),
   });
-
   return res.redirect(`/videos/${id}`);
 };
 
@@ -62,7 +64,7 @@ export const postUpload = async (req, res) => {
 
 export const deleteVideo = async(req, res) => {
   const { id } = req.params;
-  await Video.findByIdAndDelete(id);
+  await Video.findByIdAndDelete(id); // 되도록이면 Delete 기능을 사용
   return res.redirect("/");
 };
 
