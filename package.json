@@ -7,7 +7,7 @@
     "url": "git+https://github.com/ubg11111/wetube-reloaded.git"
   },
   "scripts": {
-    "dev": "nodemon --exec babel-node src/init.js"
+    "start": "nodemon --exec babel-node src/init.js"
   },
   "author": "BangJ",
   "license": "MIT",
@@ -24,6 +24,7 @@
     "express-session": "^1.17.2",
     "mongoose": "^6.0.5",
     "morgan": "^1.10.0",
+    "multer": "^1.4.3",
     "node-fetch": "^2.6.1",
     "pug": "^3.0.2"
   },
