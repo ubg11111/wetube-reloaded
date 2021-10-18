@@ -15,20 +15,21 @@ const logger = morgan("dev");
 app.set("view engine", "pug");
 app.set("views", process.cwd() + "/src/views");
 app.use(logger);
-app.use(express.urlencoded({extends: true}));
+app.use(express.urlencoded({ extends: true }));
 
 
 app.use(
   session({
     secret: process.env.COOKE_SECRET,
-    resave:false,
-    saveUninitialized:false,
-    store: MongoStore.create({mongoUrl: process.env.DB_URL}),
+    resave: false,
+    saveUninitialized: false,
+    store: MongoStore.create({ mongoUrl: process.env.DB_URL }),
   })
 );
 
 
 app.use(localsMiddleware);
+app.use("/uploads", express.static("uploads"));
 app.use("/", rootRouter);
 app.use("/videos", videoRouter);
 app.use("/users", userRouter);
