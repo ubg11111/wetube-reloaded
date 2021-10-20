@@ -1,5 +1,6 @@
 import { compareSync } from "bcrypt";
 import Video from "../models/Video"
+import User from "../models/User"
 
 
 // sort 정렬에 관한 기능 desc 오름차순 , asc 내림차순 
@@ -11,7 +12,10 @@ export const home = async (req, res) => {
 
 export const watch = async (req, res) => {
   const { id } = req.params;
-  const video = await Video.findById(id);
+  /* populate를 사용하여 owner(ObjectId)값을 mongoose가 vidoe를 찾고
+  그 안에서 owner도 찾아주는 기능을 함 */
+  const video = await Video.findById(id).populate("owner");
+  console.log(video);
   if (!video) {
     return res.status(404).render("404", { pageTitle: "Video Not Found" });
   }
@@ -47,6 +51,7 @@ export const getUpload = (req, res) => {
 };
 
 export const postUpload = async (req, res) => {
+  const { user: { _id }, } = req.session;
   const { path: fileUrl } = req.file;
   const { title, description, hashtags } = req.body;
   try {
@@ -54,6 +59,7 @@ export const postUpload = async (req, res) => {
       title,
       description,
       fileUrl,
+      owner: _id,
       hashtags: Video.formatHashtags(hashtags),
     });
     return res.redirect("/");

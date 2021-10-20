@@ -1,4 +1,5 @@
 import User from "../models/User";
+import Video from "../models/Video";
 import fetch from "node-fetch";
 import bcrypt, { compareSync } from "bcrypt";
 
@@ -215,5 +216,6 @@ export const see = async (req, res) => {
       pageTitle: "User Not Found"
     });
   };
-  return res.render("users/profile", { pageTitle: `${user.name}의 Profile`, user });
+  const videos = await Video.find({ owner: user._id })
+  return res.render("users/profile", { pageTitle: `${user.name}의 Profile`, user, videos });
 };
