@@ -1,3 +1,5 @@
 import "../scss/styles.scss";
 
-alert("it works");
+const message = "Good Work";
+
+console.log(message);
