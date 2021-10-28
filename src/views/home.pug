@@ -3,7 +3,8 @@ include mixins/video
 
 
 block content
-  each potato in videos
-      +video(potato)
-  else 
-      li Sorry Nothing Found.
+  div.video-grid
+    each potato in videos
+        +video(potato)
+    else 
+        span.empty__message No videos found

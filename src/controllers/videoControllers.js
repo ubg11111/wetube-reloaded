@@ -6,7 +6,7 @@ import User from "../models/User"
 // sort 정렬에 관한 기능 desc 오름차순 , asc 내림차순 
 // createdAT(날짜) 오브젝트를 통해 기능 활성화
 export const home = async (req, res) => {
-  const videos = await Video.find({}).sort({ createdAT: "asc" });
+  const videos = await Video.find({}).sort({ createdAT: "desc" }).populate("owner");
   return res.render("home", { pageTitle: "Home", videos });
 };
 
