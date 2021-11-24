@@ -10,6 +10,7 @@ export const home = async (req, res) => {
   return res.render("home", { pageTitle: "Home", videos });
 };
 
+
 export const watch = async (req, res) => {
   const { id } = req.params;
   /* populate를 사용하여 owner(ObjectId)값을 mongoose가 vidoe를 찾고
