@@ -11,11 +11,13 @@ const fullScreenBtn = document.getElementById("fullScreen");
 const fullScreenIcon = fullScreenBtn.querySelector("i");
 const videoContainer = document.getElementById("videoContainer");
 const videoControls = document.getElementById("videoControls");
+const textarea = document.querySelector("#commentForm");
 
 let controlsTimeout = null;
 let constrolsMovementTimeout = null;
 let volumeValue = 0.5;
 video.volume = volumeValue;
+
 
 
 
@@ -111,6 +113,7 @@ const handleKeyPress = (event) => {
   switch (event.keyCode) {
     case 32:
       handlePlayClick();
+      event.preventDefault();
       break;
     case 77 || 109: // 77(M) or 109(m) 둘중 하나라도 트루이면 작동
       handleMuteClick();
@@ -158,8 +161,9 @@ videoContainer.addEventListener("mouseleave", handleMouseLeave);
 timeline.addEventListener("input", handleTimelineChange);
 fullScreenBtn.addEventListener("click", handleFullScreen);
 //코드 챌린지 스페이스바를 누르면 플레이 재생. 한번더 누르면 일시정지
-// document 외부 이벤트를 연결 keypress(특정아식스 코드값 적용) keydown은 전체키 적용
-document.addEventListener("keydown", handleKeyPress, false);
+// document 외부 이벤트를 연결 keypress(누르고만 있을 때) keydown은 전체키 적용
+document.addEventListener("keydown", handleKeyPress);
 // 비디오 화면을 클릭 할때 플레이재생. 한번더 누르면 일시정지
 video.addEventListener("click", handleMouseClick);
+
 
