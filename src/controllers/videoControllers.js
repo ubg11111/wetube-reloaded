@@ -1,5 +1,7 @@
-import Video from "../models/Video"
-import User from "../models/User"
+import Video from "../models/Video";
+import Comment from "../models/Comment";
+import User from "../models/User";
+
 
 
 // sort 정렬에 관한 기능 desc 오름차순 , asc 내림차순 
@@ -14,7 +16,7 @@ export const watch = async (req, res) => {
   const { id } = req.params;
   /* populate를 사용하여 owner(ObjectId)값을 mongoose가 vidoe를 찾고
   그 안에서 owner도 찾아주는 기능을 함 */
-  const video = await Video.findById(id).populate("owner");
+  const video = await Video.findById(id).populate("owner").populate("comments");
   console.log(video);
   if (!video) {
     return res.status(404).render("404", { pageTitle: "Video Not Found" });
@@ -124,8 +126,24 @@ export const registerview = async (req, res) => {
   return res.sendStatus(200);
 };
 
-export const createComment = (req, res) => {
-  console.log(req.params);
-  console.log(req.body);
-  return res.end();
+export const createComment = async (req, res) => {
+  const {
+    session: { user },
+    body: { text },
+    params: { id },
+  } = req;
+
+  const video = await Video.findById(id)
+
+  if (!video) {
+    return res.sendStatus(404);
+  }
+  const comment = await Comment.create({
+    text,
+    owner: user._id,
+    video: id,
+  });
+  video.comments.push(comment._id);
+  video.save();
+  return res.sendStatus(201);
 };
