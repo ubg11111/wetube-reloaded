@@ -36,8 +36,15 @@
   }
 }
 
-.video__comment>i{
-  margin-right: 10px;
+.deleteBtn{
+  font-size: 14px;
+  padding: 5px 10px;
+  margin: 5px;
+  cursor: pointer;
+}
+
+.btnPoint{
+  cursor: pointer;
 }
 
 .edit__Video, .delete__Video{

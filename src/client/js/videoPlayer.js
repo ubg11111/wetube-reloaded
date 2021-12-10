@@ -11,7 +11,7 @@ const fullScreenBtn = document.getElementById("fullScreen");
 const fullScreenIcon = fullScreenBtn.querySelector("i");
 const videoContainer = document.getElementById("videoContainer");
 const videoControls = document.getElementById("videoControls");
-const textarea = document.querySelector("#commentForm");
+const textarea = document.querySelector('textarea');
 
 let controlsTimeout = null;
 let constrolsMovementTimeout = null;
@@ -110,7 +110,7 @@ const handleMouseLeave = () => {
 
 // switch 조건문을 사용하여 각 케이스마다 이벤트키입력 처리
 const handleKeyPress = (event) => {
-  switch (event.keyCode) {
+  switch (event.target !== textarea && event.keyCode) {
     case 32:
       handlePlayClick();
       event.preventDefault();
@@ -128,7 +128,8 @@ const handleKeyPress = (event) => {
       video.currentTime += 5;
       break;
   }
-  handleMouseMove(); // 버튼을 입력할때 shohwing Class 추가
+  if (event.target !== textarea && event.keyCode)
+    handleMouseMove(); // 버튼을 입력할때 shohwing Class 추가
 };
 
 // video.puased 비디오가 멈춤이 true이면 handelPlayClick 적용
