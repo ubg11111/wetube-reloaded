@@ -110,6 +110,8 @@ const handleMouseLeave = () => {
 
 // switch 조건문을 사용하여 각 케이스마다 이벤트키입력 처리
 const handleKeyPress = (event) => {
+  // event.target !== textarea 는 텍스트에어리어안이 아니면 && 이벤트 키코드 작동
+  // 즉 텍스트공간에서는 false 작용하기에 스위치문이 작동하지않음. &&의경우 and 논리연사자로 두 조건모두 true인 경우 작동하게끔 제어
   switch (event.target !== textarea && event.keyCode) {
     case 32:
       handlePlayClick();

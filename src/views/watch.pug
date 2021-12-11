@@ -33,8 +33,8 @@ block content
     if loggedIn
         div.video__add-comments
             form.video__comment-form#commentForm
-                textarea(cols="30", rows="10", placeholder="Write a nice comment.")
-                button.btnPoint Add Comment
+                textarea(cols="30", rows="10", placeholder="공개 댓글 추가..")
+                button.btnPoint 댓글
     div.video__comments
         ul
             each comment in video.comments.reverse()
@@ -42,7 +42,7 @@ block content
                     i.fas.fa-comment
                     span #{comment.text}
                     if String(comment.owner._id) === String(loggedInUser._id)
-                        span.deleteBtn  ❌
+                        span.deleteBtn ❌
 
 block scripts 
   script(src="/static/js/videoPlayer.js")
