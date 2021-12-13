@@ -7,12 +7,8 @@
     "url": "git+https://github.com/ubg11111/wetube-reloaded.git"
   },
   "scripts": {
-    "start": "node build/init.js",
-    "build": "npm run build:server && npm run build:assets",
-    "build:server": "babel src -d build",
-    "build:assets": "webpack --mode=production",
-    "dev:server": "nodemon",
-    "dev:assets": "webpack --mode=development -w"
+    "start": "nodemon",
+    "start:assets": "webpack"
   },
   "author": "BangJ",
   "license": "MIT",
@@ -37,8 +33,7 @@
     "regenerator-runtime": "^0.13.9"
   },
   "devDependencies": {
-    "@babel/cli": "^7.16.0",
-    "@babel/core": "^7.16.0",
+    "@babel/core": "^7.15.0",
     "@babel/node": "^7.14.9",
     "@babel/preset-env": "^7.15.0",
     "babel-loader": "^8.2.3",

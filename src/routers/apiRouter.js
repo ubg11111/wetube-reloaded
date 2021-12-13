@@ -1,5 +1,5 @@
 import exrpess from "express";
-import { registerview, createComment, deleteComment } from "../controllers/videoControllers.js";
+import { registerview, createComment, deleteComment } from "../controllers/videoControllers";
 
 
 const apiRouter = exrpess.Router();
