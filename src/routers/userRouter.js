@@ -1,7 +1,6 @@
 import express from "express";
-import { removeAllListeners } from "nodemon";
-import { getEdit, postEdit, logout, see, startGithubLogin, finishGithubLogin, getChangePassword, postChangePassword } from "../controllers/userControllers"
-import { protectorMiddleware, publicOnlyMideelware, avatarUpload } from "../middlewares";
+import { getEdit, postEdit, logout, see, startGithubLogin, finishGithubLogin, getChangePassword, postChangePassword } from "../controllers/userControllers.js"
+import { protectorMiddleware, publicOnlyMideelware, avatarUpload } from "../middlewares.js";
 const userRouter = express.Router();
 
 userRouter.get("/logout", protectorMiddleware, logout);

@@ -3,11 +3,11 @@ import morgan from "morgan";
 import session from "express-session";
 import flash from "express-flash";
 import MongoStore from "connect-mongo";
-import rootRouter from "./routers/rootRouter";
-import videoRouter from "./routers/videoRouter";
-import userRouter from "./routers/userRouter";
-import apiRouter from "./routers/apiRouter";
-import { localsMiddleware } from "./middlewares";
+import rootRouter from "./routers/rootRouter.js";
+import videoRouter from "./routers/videoRouter.js";
+import userRouter from "./routers/userRouter.js";
+import apiRouter from "./routers/apiRouter.js";
+import { localsMiddleware } from "./middlewares.js";
 
 
 const app = express();
