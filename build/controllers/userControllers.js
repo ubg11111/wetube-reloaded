@@ -1,13 +1,23 @@
 "use strict";
 
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.see = exports.postChangePassword = exports.getChangePassword = exports.postEdit = exports.getEdit = exports.logout = exports.finishGithubLogin = exports.startGithubLogin = exports.postLogin = exports.getLogin = exports.postjoin = exports.getjoin = void 0;
 
-var _User = _interopRequireDefault(require("../models/User.js"));
+var _User = _interopRequireDefault(require("../models/User"));
+
+var _Video = _interopRequireDefault(require("../models/Video"));
 
 var _nodeFetch = _interopRequireDefault(require("node-fetch"));
+
+var _bcrypt = _interopRequireWildcard(require("bcrypt"));
+
+function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
+
+function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || _typeof(obj) !== "object" && typeof obj !== "function") { return { "default": obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj["default"] = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
@@ -145,7 +155,7 @@ var postLogin = /*#__PURE__*/function () {
 
           case 7:
             _context2.next = 9;
-            return bcrypt.compare(password, user.password);
+            return _bcrypt["default"].compare(password, user.password);
 
           case 9:
             ok = _context2.sent;
@@ -404,7 +414,7 @@ var postChangePassword = /*#__PURE__*/function () {
           case 3:
             user = _context5.sent;
             _context5.next = 6;
-            return bcrypt.compare(oldPassword, user.password);
+            return _bcrypt["default"].compare(oldPassword, user.password);
 
           case 6:
             ok = _context5.sent;
@@ -473,9 +483,10 @@ var see = /*#__PURE__*/function () {
 
           case 3:
             user = _context6.sent;
+            console.log(user);
 
             if (user) {
-              _context6.next = 6;
+              _context6.next = 7;
               break;
             }
 
@@ -483,14 +494,14 @@ var see = /*#__PURE__*/function () {
               pageTitle: "User Not Found"
             }));
 
-          case 6:
+          case 7:
             ;
             return _context6.abrupt("return", res.render("users/profile", {
               pageTitle: "".concat(user.name, "\uC758 Profile"),
               user: user
             }));
 
-          case 8:
+          case 9:
           case "end":
             return _context6.stop();
         }

@@ -15,15 +15,15 @@ var _expressFlash = _interopRequireDefault(require("express-flash"));
 
 var _connectMongo = _interopRequireDefault(require("connect-mongo"));
 
-var _rootRouter = _interopRequireDefault(require("./routers/rootRouter.js"));
+var _rootRouter = _interopRequireDefault(require("./routers/rootRouter"));
 
-var _videoRouter = _interopRequireDefault(require("./routers/videoRouter.js"));
+var _videoRouter = _interopRequireDefault(require("./routers/videoRouter"));
 
-var _userRouter = _interopRequireDefault(require("./routers/userRouter.js"));
+var _userRouter = _interopRequireDefault(require("./routers/userRouter"));
 
-var _apiRouter = _interopRequireDefault(require("./routers/apiRouter.js"));
+var _apiRouter = _interopRequireDefault(require("./routers/apiRouter"));
 
-var _middlewares = require("./middlewares.js");
+var _middlewares = require("./middlewares");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 

@@ -7,11 +7,11 @@ exports["default"] = void 0;
 
 var _express = _interopRequireDefault(require("express"));
 
-var _userControllers = require("../controllers/userControllers.js");
+var _userControllers = require("../controllers/userControllers");
 
-var _videoControllers = require("../controllers/videoControllers.js");
+var _videoControllers = require("../controllers/videoControllers");
 
-var _middlewares = require("../middlewares.js");
+var _middlewares = require("../middlewares");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 

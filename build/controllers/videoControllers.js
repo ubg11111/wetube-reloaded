@@ -5,11 +5,11 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.deleteComment = exports.createComment = exports.registerview = exports.search = exports.deleteVideo = exports.postUpload = exports.getUpload = exports.postEdit = exports.getEdit = exports.watch = exports.home = void 0;
 
-var _Video = _interopRequireDefault(require("../models/Video.js"));
+var _Video = _interopRequireDefault(require("../models/Video"));
 
-var _Comment = _interopRequireDefault(require("../models/Comment.js"));
+var _Comment = _interopRequireDefault(require("../models/Comment"));
 
-var _User = _interopRequireDefault(require("../models/User.js"));
+var _User = _interopRequireDefault(require("../models/User"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 

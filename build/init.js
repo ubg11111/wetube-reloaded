@@ -4,15 +4,15 @@ require("regenerator-runtime");
 
 require("dotenv/config");
 
-require("./db.js");
+require("./db");
 
-require("../build/models/Video.js");
+require("../src/models/Video");
 
-require("../build/models/User.js");
+require("../src/models/User");
 
-require("../build/models/Comment.js");
+require("../src/models/Comment");
 
-var _server = _interopRequireDefault(require("./server.js"));
+var _server = _interopRequireDefault(require("./server"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
