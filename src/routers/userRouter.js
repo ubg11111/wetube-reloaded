@@ -1,5 +1,4 @@
 import express from "express";
-import { removeAllListeners } from "nodemon";
 import { getEdit, postEdit, logout, see, startGithubLogin, finishGithubLogin, getChangePassword, postChangePassword } from "../controllers/userControllers"
 import { protectorMiddleware, publicOnlyMideelware, avatarUpload } from "../middlewares";
 const userRouter = express.Router();
