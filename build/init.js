@@ -6,11 +6,11 @@ require("dotenv/config");
 
 require("./db");
 
-require("../src/models/Video");
+require("./models/Video");
 
-require("../src/models/User");
+require("./models/User");
 
-require("../src/models/Comment");
+require("./models/Comment");
 
 var _server = _interopRequireDefault(require("./server"));
 
