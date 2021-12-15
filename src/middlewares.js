@@ -1,4 +1,3 @@
-import { compareSync } from "bcrypt";
 import multer from "multer";
 
 export const localsMiddleware = (req, res, next) => {
