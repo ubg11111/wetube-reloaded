@@ -1,6 +1,6 @@
 import User from "../models/User";
 import fetch from "node-fetch";
-import bcrypt, { compareSync } from "bcrypt";
+import bcrypt from "bcrypt";
 
 const HTTP_BAD_REQUEST = 400;
 
