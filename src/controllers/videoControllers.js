@@ -15,7 +15,7 @@ export const watch = async (req, res) => {
   const { id } = req.params;
   /* populate를 사용하여 owner(ObjectId)값을 mongoose가 vidoe를 찾고
   그 안에서 owner도 찾아주는 기능을 함 */
-  const video = await Video.findById(id).populate("owner").populate("comments");
+  const video = await Video.findById(id).populate("comments").populate("owner");
   if (!video) {
     return res.status(404).render("404", { pageTitle: "Video Not Found" });
   }
@@ -60,12 +60,13 @@ export const postUpload = async (req, res) => {
   const { user: { _id }, } = req.session;
   const { video, thumb } = req.files;
   const { title, description, hashtags } = req.body;
+  const isHeroku = process.env.NODE_ENV === "production";
   try {
     const newVideo = await Video.create({
       title,
       description,
-      fileUrl: video[0].location,
-      thumbUrl: thumb[0].location,
+      fileUrl: isHeroku ? video[0].location : video[0].path,
+      thumbUrl: isHeroku ? thumb[0].location : thumb[0].path,
       owner: _id,
       hashtags: Video.formatHashtags(hashtags),
     });
