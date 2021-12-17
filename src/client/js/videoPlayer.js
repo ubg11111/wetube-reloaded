@@ -19,12 +19,6 @@ let volumeValue = 0.5;
 video.volume = volumeValue;
 
 
-
-
-// 포맷타임변수에 세컨드 어규먼트를 적용 new Date 이벤트를 각초에 * 1000ms 적용하여 초를 문자식으로 변환 substr을 통해 노출할 필요 문자열을 잘라 가져옴
-const formatTime = (seconds) => new Date(seconds * 1000).toISOString().substr(14, 5)
-
-
 // handlePlayClick 함수생성 조건문 paused(멈춤) 플레이 조정
 const handlePlayClick = (e) => {
   if (video.paused) {
@@ -61,6 +55,9 @@ const handleVolumeChange = (event) => {
   volumeValue = value;
   video.volume = value;
 };
+
+// 포맷타임변수에 세컨드 어규먼트를 적용 new Date 이벤트를 각초에 * 1000ms 적용하여 초를 문자식으로 변환 substr을 통해 노출할 필요 문자열을 잘라 가져옴
+const formatTime = (seconds) => new Date(seconds * 1000).toISOString().substr(14, 5);
 
 const handleLoadedMetadata = () => {
   totalTime.innerText = formatTime(Math.floor(video.duration));
