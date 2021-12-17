@@ -67,12 +67,14 @@ const handleLoadedMetadata = () => {
 const handleTimeUpdate = () => {
   currenTime.innerText = formatTime(Math.floor(video.currentTime));
   timeline.value = Math.floor(video.currentTime);
-}
+};
 
 const handleTimelineChange = (event) => {
-  const { target: { value }, } = event;
+  const {
+    target: { value },
+  } = event;
   video.currentTime = value;
-}
+};
 
 const handleFullScreen = () => {
   const fullscreen = document.fullscreenElement;
